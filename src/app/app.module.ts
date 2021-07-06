@@ -18,6 +18,10 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 import { appReducer } from './store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipeEffects } from './recipes/store/recipes.effects';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { appReducer } from './store/app.reducer';
     HttpClientModule,
     RecipesModule,
     SharedModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([RecipeEffects]),
+    StoreDevtoolsModule.instrument({logOnly: environment.production})
   ],
   providers: [
     ShoppingListService, RecipeService, 
