@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+.dropdown-position {
+    position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);
+}
